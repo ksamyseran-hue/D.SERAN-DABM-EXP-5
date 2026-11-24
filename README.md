@@ -43,5 +43,79 @@ The dataset consists of 16 manually entered customer data points representing tw
 | | `plt.title()`, `plt.xlabel()`, `plt.ylabel()`, `plt.legend()`, `plt.grid()`, `plt.show()` | Configures labels, legend, gridlines, and displays the final graph |
 
 ## Program & Output
+## Input 1
+```
+# Experiment No: 5
+# Cluster Analysis for Market Segmentation
+# Using K-Means Algorithm
 
+# 1. Import required libraries
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# 2. Define manual data arrays
+x = np.array([20, 22, 25, 70, 75, 80, 30, 35,
+              32, 24, 28, 75, 71, 83, 28, 27])
+
+y = np.array([30, 35, 40, 80, 85, 90, 70, 75,
+              33, 31, 45, 70, 83, 89, 60, 67])
+
+# 3. Combine X and Y values
+X = np.column_stack((x, y))
+
+# 4. Apply K-Means clustering
+kmeans = KMeans(n_clusters=3, random_state=42, n_init='auto')
+labels = kmeans.fit_predict(X)
+
+# 5. Retrieve cluster centroids
+centroids = kmeans.cluster_centers_
+
+# 6. Visualize clusters
+plt.figure(figsize=(8, 6))
+
+plt.scatter(X[:, 0], X[:, 1],
+            c=labels, cmap='viridis',
+            s=100, alpha=0.8)
+
+plt.scatter(centroids[:, 0], centroids[:, 1],
+            c='red', marker='X',
+            s=200, label='Centroids')
+
+plt.title('K-Means Clustering for Market Segmentation')
+plt.xlabel('Feature 1 (Annual Income)')
+plt.ylabel('Feature 2 (Spending Score)')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+## Output 1
+<img width="686" height="547" alt="image" src="https://github.com/user-attachments/assets/b45a6514-25ce-4963-8297-f1cd4f4ac231" />
+
+
+## Input 2
+```
+# 7. Display cluster details
+print("Cluster Labels for Data Points:")
+print(labels)
+```
+## Output 2
+```
+Cluster Labels for Data Points:
+[1 1 1 0 0 0 2 2 1 1 1 0 0 0 2 2]
+```
+## Input 3
+```
+print("\nCluster Centroids (Coordinates):")
+print(centroids)
+```
+## Output 3
+```
+Cluster Centroids (Coordinates):
+[[75.66666667 82.83333333]
+ [25.16666667 35.66666667]
+ [30.         68.        ]]
+```
 ## Result
+
+Thus, the K-Means Clustering algorithm was implemented using Python to group similar data points into distinct clusters. The clusters were visualized and analysed for market segmentation, and the objective was successfully achieved.
